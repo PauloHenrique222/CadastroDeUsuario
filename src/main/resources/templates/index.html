@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<meta charset = "UTF-8">
+	<!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Cadastro de usuário ITSS</title>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+		    <div class="nav-wrapper">
+		    <a href="#" class="brand-logo center">Usuários ITSS</a>
+		    </div>
+		</nav>
+    </header>
+    
+    <div align="right" class ="container">
+    	<h3><a href="/cadastrarPessoa" class="waves-effect waves-light btn"><i class="material-icons left">control_point</i>Cadastrar Pessoa</a></h3>
+    </div>
+    <form action="pesquisarpessoa" method = "post" class = "container">
+       <label>Pesquisar por nome</label>
+       <input name = "nomepesquisa">
+       <input class="waves-effect waves-light btn"  type = "submit" value = "Buscar">
+    </form>
+    
+	<table class = "container">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>Login</th>
+				<th>Email</th>
+				<th>Senha</th>
+				<th>CPF</th>
+				<th>RG</th>
+				<th>Editar</th>
+				<th>Deletar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each = "pessoa: ${pessoa}">
+				<td><span th:text="${pessoa.nome}"></span></td>
+				<td><span th:text="${pessoa.login}"></span></td>
+				<td><span th:text="${pessoa.email}"></span></td>
+				<td><span th:text="${pessoa.senha}"></span></td>
+				<td><span th:text="${pessoa.cpf}"></span></td>
+				<td><span th:text="${pessoa.rg}"></span></td>
+				<td><a class="waves-effect waves-light btn"><i class="material-icons center">create</i></a></td>
+				<td><a class="waves-effect waves-light btn"><i class="material-icons center">delete</i></a></td>
+		    </tr>
+		</tbody>
+	</table>
+	<div align="right" class ="container">
+	   <h3><a href="/usuarios" class="waves-effect waves-light btn">Voltar</a></h3>
+	</div>
+	<!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+
+</html>
