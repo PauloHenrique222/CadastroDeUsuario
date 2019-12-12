@@ -54,19 +54,30 @@ public class CadastroController {
 	}
 	
 	@PostMapping("/pesquisarpessoa")
-	public ModelAndView pesqUsuarios(@RequestParam("nomepesquisa") String nomepesquisa) {
+	public ModelAndView pesqUsuarios(@RequestParam("nomepesquisa") String nomepesquisa, @RequestParam("emailpesquisa") String emailpesquisa) {
 		
 		ModelAndView mv = new ModelAndView("index");
 		
-		if(nomepesquisa.equals("")) {
+		if(nomepesquisa.equals("") && emailpesquisa.equals("")) {
 			Iterable<Pessoa> pessoas = er.findAll();
 			mv.addObject("pessoa", pessoas);
 			return mv;
 		}
-		
-		Iterable<Pessoa> pessoas = er.findByNome(nomepesquisa);
+		if(emailpesquisa.equals("")) {
+			Iterable<Pessoa> pessoas = er.findByNome(nomepesquisa);
+			mv.addObject("pessoa", pessoas);
+			return mv;
+		}
+		Iterable<Pessoa> pessoas = er.findByEmail(emailpesquisa);
 		mv.addObject("pessoa", pessoas);
 		return mv;
+		
+	}
+	
+	@RequestMapping("/deletar")
+	public String findByDescricao(@RequestParam("rg") String rg) {
+		er.deleteById(rg);
+		return "redirect:/usuarios";
 	}
 	
 }

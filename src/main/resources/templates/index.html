@@ -27,8 +27,16 @@
     	<h3><a href="/cadastrarPessoa" class="waves-effect waves-light btn"><i class="material-icons left">control_point</i>Cadastrar Pessoa</a></h3>
     </div>
     <form action="pesquisarpessoa" method = "post" class = "container">
-       <label>Pesquisar por nome</label>
-       <input name = "nomepesquisa">
+       <div class = "row">
+          <div class ="imput-field col s6">
+             <label>Pesquisar por nome</label>
+             <input name = "nomepesquisa">
+          </div>
+          <div class ="imput-field col s6">
+             <label>Pesquisar por email</label>
+             <input name = "emailpesquisa">
+          </div>
+       </div>
        <input class="waves-effect waves-light btn"  type = "submit" value = "Buscar">
     </form>
     
@@ -54,7 +62,7 @@
 				<td><span th:text="${pessoa.cpf}"></span></td>
 				<td><span th:text="${pessoa.rg}"></span></td>
 				<td><a class="waves-effect waves-light btn"><i class="material-icons center">create</i></a></td>
-				<td><a class="waves-effect waves-light btn"><i class="material-icons center">delete</i></a></td>
+				<td><a th:href="@{/deletar(rg=${pessoa.rg})}" class="waves-effect waves-light btn"><i class="material-icons center">delete</i></a></td>
 		    </tr>
 		</tbody>
 	</table>

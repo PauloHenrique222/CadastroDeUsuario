@@ -8,4 +8,6 @@ public interface CadastroRepository extends CrudRepository<Pessoa, String>{
 	
 	List<Pessoa> findByNome(String nome);
 
+	List<Pessoa> findByEmail(String emailpesquisa);
+
 }

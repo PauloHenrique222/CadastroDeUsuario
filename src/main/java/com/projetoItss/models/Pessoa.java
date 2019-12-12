@@ -15,7 +15,7 @@ public class Pessoa implements Serializable{
 		
 		@Id
 		@NotNull
-		private Integer rg;
+		private String rg;
 		
 		@NotEmpty
 		private String nome;
@@ -75,11 +75,11 @@ public class Pessoa implements Serializable{
 			this.cpf = cpf;
 		}
 
-		public Integer getRg() {
+		public String getRg() {
 			return rg;
 		}
 
-		public void setRg(Integer rg) {
+		public void setRg(String rg) {
 			this.rg = rg;
 		}
 	
